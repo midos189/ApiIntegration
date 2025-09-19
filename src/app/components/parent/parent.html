@@ -1,0 +1,5 @@
+<h2>Search Products</h2>
+<input type="text" [(ngModel)]="searchText" placeholder="Search by name..." />
+@if(searchText!=""){
+<app-product-list [filterText]="searchText"></app-product-list>
+}

@@ -1,0 +1,16 @@
+<h2>Cart</h2>
+<div>
+    @for(ci of cartItems;track ci.id){
+  <p>
+    {{ ci.name }} - Price: {{ci.price}} - Quantity:<button class="btn-primary" (click)="remove(ci.id)">-</button>
+     {{ ci.quantity }}<button class="btn-primary" (click)="add(ci.id)">+</button>
+      pcs - Total Price: {{ ci.quantity * ci.price}}$<button class="btn-primary" [routerLink]="['/Products',ci.id]">details</button>
+  </p>
+  }
+  @if(total!=0){
+  <p>Total Cart :{{total}}</p>
+}@else{
+  <h3>No Items</h3>
+}
+  <button class="btn-primary" (click)="clear()">Clear Cart</button>
+</div>

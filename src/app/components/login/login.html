@@ -1,0 +1,78 @@
+<section class="vh-100 bg-dark">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-9">
+        <div class="card text-white shadow-lg" style="border-radius: 15px; background: #1e1e2f;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+
+              <div class="col-md-10 col-lg-6 col-xl-5 order-1 order-lg-1">
+                <p class="text-center h2 fw-bold mb-5 mt-2 text-info">Login</p>
+
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mx-2">
+
+                  <div class="mb-4">
+                    <label class="form-label" for="formEmail">Email Address</label>
+                    <input
+                      formControlName="email"
+                      type="email"
+                      id="formEmail"
+                      class="form-control form-control-lg bg-light text-dark"
+                      [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+                      [class.is-valid]="loginForm.get('email')?.touched && loginForm.get('email')?.valid"
+                    />
+                    @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+                      <div class="invalid-feedback">Please enter a valid email</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Email looks good</div>
+                    }
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label" for="formPassword">Password</label>
+                    <input
+                      formControlName="password"
+                      type="password"
+                      id="formPassword"
+                      class="form-control form-control-lg bg-light text-dark"
+                      [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+                      [class.is-valid]="loginForm.get('password')?.touched && loginForm.get('password')?.valid"
+                    />
+                    @if(loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
+                      <div class="invalid-feedback">Password must be at least 6 characters</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Password looks strong</div>
+                    }
+                  </div>
+                  <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-info btn-lg text-white">Login</button>
+                    <button type="button" (click)="reset()" class="btn btn-outline-light btn-lg">Reset</button>
+                  </div>
+
+                </form>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-6 d-flex align-items-center order-2 order-lg-2">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+                  class="img-fluid rounded-3 shadow-sm" alt="Login illustration">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   @if (submittedData) {
+    <div class="card mt-4 shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">User Info</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeCard()"></button>
+      </div>
+      <div class="card-body">
+        <p><strong>Email:</strong> {{ submittedData.email }}</p>
+        <p><strong>Password:</strong> {{ submittedData.password }}</p>
+      </div>
+    </div>
+  }
+</section>

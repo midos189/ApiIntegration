@@ -1,0 +1,142 @@
+<section class="vh-100 bg-light">
+  <div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-lg-11">
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-5">
+            <div class="row g-4 align-items-center">
+
+              <div class="col-md-6 order-2 order-lg-1">
+                <h2 class="text-center fw-bold mb-4 text-primary">Create Account</h2>
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-4">
+                    <label for="formName" class="form-label">Full Name</label>
+                    <input
+                      id="formName"
+                      type="text"
+                      formControlName="name"
+                      class="form-control form-control-lg"
+                      [class.is-invalid]="registerForm.get('name')?.touched && registerForm.get('name')?.invalid"
+                      [class.is-valid]="registerForm.get('name')?.touched && registerForm.get('name')?.valid"
+                    />
+                    @if(registerForm.get('name')?.touched && registerForm.get('name')?.invalid){
+                      <div class="invalid-feedback">Name must be at least 5 characters</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Name looks good</div>
+                    }
+                  </div>
+                  <div class="mb-4">
+                    <label for="formEmail" class="form-label">Email</label>
+                    <input
+                      id="formEmail"
+                      type="email"
+                      formControlName="email"
+                      class="form-control form-control-lg"
+                      [class.is-invalid]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+                      [class.is-valid]="registerForm.get('email')?.touched && registerForm.get('email')?.valid"
+                    />
+                    @if(registerForm.get('email')?.touched && registerForm.get('email')?.invalid){
+                      <div class="invalid-feedback">Enter a valid email</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Email is valid</div>
+                    }
+                  </div>
+                  <div class="mb-4">
+                    <label for="formMobile" class="form-label">Mobile</label>
+                    <input
+                      id="formMobile"
+                      type="text"
+                      formControlName="Mobile"
+                      class="form-control form-control-lg"
+                      [class.is-invalid]="registerForm.get('Mobile')?.touched && registerForm.get('Mobile')?.invalid"
+                      [class.is-valid]="registerForm.get('Mobile')?.touched && registerForm.get('Mobile')?.valid"
+                    />
+                    @if(registerForm.get('Mobile')?.touched && registerForm.get('Mobile')?.invalid){
+                      <div class="invalid-feedback">Mobile must be valid (Egyptian format)</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Mobile looks good</div>
+                    }
+                  </div>
+                  <div class="mb-4">
+                    <label for="formPassword" class="form-label">Password</label>
+                    <input
+                      id="formPassword"
+                      type="password"
+                      formControlName="password"
+                      class="form-control form-control-lg"
+                      [class.is-invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+                      [class.is-valid]="registerForm.get('password')?.touched && registerForm.get('password')?.valid"
+                    />
+                    @if(registerForm.get('password')?.touched && registerForm.get('password')?.invalid){
+                      <div class="invalid-feedback">Password must be at least 6 characters</div>
+                    }
+                    @else {
+                      <div class="valid-feedback">Password is valid</div>
+                    }
+                  </div>
+                  <div class="mb-4">
+                    <label for="formConfirmPassword" class="form-label">Confirm Password</label>
+                    <input
+                      id="formConfirmPassword"
+                      type="password"
+                      formControlName="confirmPassword"
+                      class="form-control form-control-lg"
+                      [class.is-invalid]="(registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid) || registerForm.hasError('mismatch')"
+                      [class.is-valid]="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.valid && !registerForm.hasError('mismatch')"
+                    />
+                    @if((registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid) || registerForm.hasError('mismatch')){
+                      <div class="invalid-feedback">
+                        @if(registerForm.hasError('mismatch')) {
+                          Passwords do not match
+                        }
+                      </div>
+                    }
+                    @else if(registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.valid && !registerForm.hasError('mismatch')){
+                      <div class="valid-feedback">Passwords match</div>
+                    }
+                  </div>
+                  <div class="d-grid gap-3 mb-3">
+                    <button type="submit" class="btn btn-success btn-lg">Register</button>
+                    <button type="button" (click)="reset()" class="btn btn-outline-secondary btn-lg">Reset</button>
+                  </div>
+
+                  @if (submitted && registerForm.invalid) {
+                    <div class="alert alert-danger mt-3 text-center">
+                      <strong>Please fix the form errors before submitting</strong>
+                    </div>
+                  }
+
+                </form>
+              </div>
+
+              <div class="col-md-6 order-1 order-lg-2 text-center">
+                <img src="https://images.unsplash.com/photo-1521790361543-f645cf042ec4"
+                  class="img-fluid rounded-3 shadow-sm" alt="Register illustration">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (submittedData) {
+    <div class="card mt-4 shadow-sm">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">User Info</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeCard()"></button>
+      </div>
+      <div class="card-body">
+        <p><strong>Username:</strong> {{ submittedData.name }}</p>
+        <p><strong>Email:</strong> {{ submittedData.email }}</p>
+        <p><strong>Phone:</strong> {{ submittedData.Mobile }}</p>
+      </div>
+    </div>
+  }
+</section>
+

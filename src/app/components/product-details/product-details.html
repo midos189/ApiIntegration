@@ -1,0 +1,16 @@
+<div class="col-3">
+    <div class="card" style="width: 18rem;" appCardShadow>
+  <img [src]="product.img" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">Quantity:{{product.quantity}}</p>
+    @switch(product.quantity){
+            @case(0){<span class="text-danger">Out of Stock</span>}
+            @case (1) {<span class="text-danger">one item left</span>}
+            @case (2){<span class="text-danger">Two items left</span>}
+        }
+    <p class="card-text">Price:{{product.price}}</p>
+    <button>close</button><button (click)="add(product.id)">add</button>
+  </div>
+</div>
+</div>

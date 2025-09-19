@@ -1,0 +1,54 @@
+<div class="row g-3">
+    <input class="form-control me-2" type="text" [(ngModel)]="searchText" (ngModelChange)="filteredProducts()" aria-label="Search">
+    <!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Action
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-item" (click)="catFilter(1)">Food</li>
+    <li class="dropdown-item" (click)="catFilter(2)">Electronics</li>
+    <li class="dropdown-item" (click)="catFilter(3)">Home application</li>
+    <li><hr class="dropdown-divider"></li>
+    <li class="dropdown-item" (click)="catFilter(4)">Separated link</li>
+  </ul>
+</div>
+<h2>{{currentDate | date:"dd/mm/yy"}}</h2>
+@for(prd of choosen;track prd.id){
+    <div class="col-3">
+    <div class="card" style="width: 18rem;" appCardShadow>
+  <img [src]="prd.img" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{prd.name}}</h5>
+    <p class="card-text">Quantity:{{prd.quantity}}</p>
+    @switch(prd.quantity){
+            @case(0){<span class="text-danger">Out of Stock</span>}
+            @case (1) {<span class="text-danger">one item left</span>}
+            @case (2){<span class="text-danger">Two items left</span>}
+        }
+    <p class="card-text">Price:{{prd.price | currency:"EGP"}}</p>
+    <button 
+   class="btn btn-primary" 
+   (click)="add(prd)" 
+   [disabled]="prd.quantity == 0">
+  Add
+</button>
+    <button 
+   class="btn btn-primary" 
+   (click)="buy(prd)" 
+   [disabled]="prd.quantity < 2">
+  buy
+</button>
+    <button 
+   class="btn btn-primary" 
+   (click)="details(prd.id)">
+  details
+</button>
+  </div>
+</div>
+</div>
+}
+<h3>Enter visa number:</h3>
+<input type="text" name="ch" id="ch" [(ngModel)]="textFormat">
+<h3>{{textFormat | format}}</h3>
+</div>
