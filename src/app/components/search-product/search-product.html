@@ -1,0 +1,23 @@
+<h2>Search Products</h2>
+<input type="text" [(ngModel)]="searchText" placeholder="Search by name..." />
+<button (click)="search()">search</button>
+@if(products.length!==0){
+<h2 class="text-center my-4">Our Products</h2>
+<div class="row g-4">
+  @for (prd of products; track prd.id) {
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">{{ prd.title }}</h5>
+          <p class="card-text">
+            <strong>Price:</strong> {{ prd.price }}
+          </p>
+          <p class="card-text">
+            <strong>Quantity:</strong> {{ prd.rating }}
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+}

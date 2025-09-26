@@ -1,6 +1,5 @@
 <div class="row g-3">
-    <input class="form-control me-2" type="text" [(ngModel)]="searchText" (ngModelChange)="filteredProducts()" aria-label="Search">
-    <!-- Example single danger button -->
+    <!-- <input class="form-control me-2" type="text" [(ngModel)]="searchText" (ngModelChange)="filteredProducts()" aria-label="Search">
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     Action
@@ -12,16 +11,16 @@
     <li><hr class="dropdown-divider"></li>
     <li class="dropdown-item" (click)="catFilter(4)">Separated link</li>
   </ul>
-</div>
+</div> -->
 <h2>{{currentDate | date:"dd/mm/yy"}}</h2>
 @for(prd of choosen;track prd.id){
     <div class="col-3">
     <div class="card" style="width: 18rem;" appCardShadow>
-  <img [src]="prd.img" class="card-img-top" alt="...">
+  <img [src]="prd.image" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{prd.name}}</h5>
-    <p class="card-text">Quantity:{{prd.quantity}}</p>
-    @switch(prd.quantity){
+    <h5 class="card-title">{{prd.title}}</h5>
+    <p class="card-text">Quantity:{{prd.description}}</p>
+    <!-- @switch(prd.quantity){
             @case(0){<span class="text-danger">Out of Stock</span>}
             @case (1) {<span class="text-danger">one item left</span>}
             @case (2){<span class="text-danger">Two items left</span>}
@@ -43,12 +42,12 @@
    class="btn btn-primary" 
    (click)="details(prd.id)">
   details
-</button>
+</button>-->
   </div>
 </div>
 </div>
 }
-<h3>Enter visa number:</h3>
+<!-- <h3>Enter visa number:</h3>
 <input type="text" name="ch" id="ch" [(ngModel)]="textFormat">
-<h3>{{textFormat | format}}</h3>
+<h3>{{textFormat | format}}</h3> -->
 </div>

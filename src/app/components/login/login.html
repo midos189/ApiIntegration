@@ -14,14 +14,14 @@
                   <div class="mb-4">
                     <label class="form-label" for="formEmail">Email Address</label>
                     <input
-                      formControlName="email"
+                      formControlName="username"
                       type="email"
                       id="formEmail"
                       class="form-control form-control-lg bg-light text-dark"
-                      [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
-                      [class.is-valid]="loginForm.get('email')?.touched && loginForm.get('email')?.valid"
+                      [class.is-invalid]="loginForm.get('username')?.touched && loginForm.get('username')?.invalid"
+                      [class.is-valid]="loginForm.get('username')?.touched && loginForm.get('username')?.valid"
                     />
-                    @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+                    @if(loginForm.get('email')?.touched && loginForm.get('username')?.invalid){
                       <div class="invalid-feedback">Please enter a valid email</div>
                     }
                     @else {
@@ -37,6 +37,7 @@
                       class="form-control form-control-lg bg-light text-dark"
                       [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
                       [class.is-valid]="loginForm.get('password')?.touched && loginForm.get('password')?.valid"
+                      value="83r5^_"
                     />
                     @if(loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
                       <div class="invalid-feedback">Password must be at least 6 characters</div>

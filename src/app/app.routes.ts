@@ -8,15 +8,17 @@ import { Cart } from './components/cart/cart';
 import { Parent } from './components/parent/parent';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
+import { authGuard } from './guards/auth-guard';
+import { SearchProduct } from './components/search-product/search-product';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     {path:'Home',component:Home},
     {path:'AboutUs',component:AboutUs},
-    {path:'Products',component:Products},
+    {path:'Products',component:Products,canActivate:[authGuard]},
     {path:'Products/:id',component:ProductDetails},
     {path:'Cart',component:Cart},
-    {path:'Parent',component:Parent},
+    {path:'SearchProducts',component:SearchProduct},
     {path:'Login',component:Login},
     {path:'Register',component:Register},
     {path:'**',component:NotFound}
